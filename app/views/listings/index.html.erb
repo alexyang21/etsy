@@ -1,0 +1,24 @@
+<div class="center">
+  <h1>Find handcrafted items from around the world</h1>
+</div>
+
+<div class="row center">
+  <% @listings.each do |listing| %>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <%= image_tag listing.image.url %>
+        <div class="caption">
+          <h4><%= listing.name %></h4>
+          <p><%= number_to_currency(listing.price) %></p>
+          <%= link_to 'Show', listing %>
+          <%= link_to 'Edit', edit_listing_path(listing) %>
+          <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Listing', new_listing_path %>
